@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>GetDLS!</title>
+
+  <link href="style/main.css" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="description" content="Combine EBAL schools to reach the almighty De La Salle! A 2048-style game with a live leaderboard.">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+  <div class="container">
+    <div class="heading">
+      <h1 class="title">GetDLS</h1>
+      <div class="scores-container">
+        <div class="score-container">0</div>
+        <div class="best-container">0</div>
+      </div>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <a class="tab active" href="#play" data-tab="play" role="tab">Play</a><a class="tab" href="#leaderboard" data-tab="leaderboard" role="tab">Leaderboard</a>
+    </div>
+
+    <div class="game-panel">
+      <p class="game-intro">Combine other EBAL schools to reach the <span onclick="document.body.style.background='url(img/delasalle.png)';document.body.style.backgroundSize='120px';">almighty <strong>De La Salle!</strong></span></p>
+
+      <div class="game-container">
+        <div class="game-message">
+          <p></p>
+          <div class="lower">
+            <a class="keep-playing-button">Keep going</a>
+            <a class="retry-button">Try again</a>
+          </div>
+        </div>
+
+        <div class="grid-container">
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+        </div>
+
+        <div class="tile-container">
+
+        </div>
+      </div>
+
+      <div class="submit-score">
+        <p class="submit-title"><strong class="submit-heading">Game over!</strong> Put your <strong class="submit-points">0</strong> points on the leaderboard:</p>
+        <form class="submit-form" autocomplete="off">
+          <input type="text" class="player-name" name="name" maxlength="20" placeholder="Your name" aria-label="Your name">
+          <button type="submit" class="button submit-button">Submit</button>
+        </form>
+        <p class="submit-status"></p>
+      </div>
+
+      <p class="game-explanation">
+        <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> (or swipe) to move the tiles. When two tiles with the same school touch, they <strong>merge into one!</strong>
+        <br><strong class="important">Note:</strong> The order of schools follows the EBAL rankings, from the bottom of the league up to the top.
+      </p>
+      <ul class="school-order">
+        <li><span class="mini-tile" style="background-image:url(img/dougherty.png)"></span>Dougherty Valley</li><li><span class="mini-tile" style="background-image:url(img/foothill.png)"></span>Foothill</li><li><span class="mini-tile" style="background-image:url(img/dublin.png)"></span>Dublin</li><li><span class="mini-tile" style="background-image:url(img/livermore.png)"></span>Livermore</li><li><span class="mini-tile" style="background-image:url(img/granada.png)"></span>Granada</li><li><span class="mini-tile" style="background-image:url(img/montevista.png)"></span>Monte Vista</li><li><span class="mini-tile" style="background-image:url(img/amador.png)"></span>Amador Valley</li><li><span class="mini-tile" style="background-image:url(img/california.png)"></span>California</li><li><span class="mini-tile" style="background-image:url(img/sanramon.png)"></span>San Ramon Valley</li><li><span class="mini-tile" style="background-image:url(img/carondelet.png)"></span>Carondelet</li><li><span class="mini-tile" style="background-image:url(img/delasalle.png)"></span>De La Salle</li>
+      </ul>
+    </div>
+
+    <div class="leaderboard-panel">
+      <div class="leaderboard-head">
+        <p><strong class="important">Top scores</strong></p>
+        <a class="button refresh-button">Refresh</a>
+      </div>
+      <table class="leaderboard-table">
+        <thead>
+          <tr><th class="col-rank">#</th><th class="col-name">Player</th><th class="col-tile">Best</th><th class="col-score">Score</th></tr>
+        </thead>
+        <tbody class="leaderboard-body">
+        </tbody>
+      </table>
+      <div class="leaderboard-message">Loading&hellip;</div>
+    </div>
+
+    <hr>
+    <p>
+    Created by <strong>Arsalan Amiri</strong>, De La Salle junior. Based on <a href="http://gabrielecirulli.com" target="_blank">2048 by Gabriele Cirulli.</a>
+    </p>
+    <hr>
+    <p>
+    School logos from the <a href="https://theebal.com/School_Directory" target="_blank">East Bay Athletic League school directory</a> and belong to their schools. Not affiliated with the EBAL.
+    </p>
+  </div>
+
+  <script src="js/animframe_polyfill.js"></script>
+  <script src="js/keyboard_input_manager.js"></script>
+  <script src="js/html_actuator.js"></script>
+  <script src="js/rng.js"></script>
+  <script src="js/grid.js"></script>
+  <script src="js/tile.js"></script>
+  <script src="js/local_score_manager.js"></script>
+  <script src="js/game_manager.js"></script>
+  <script src="js/leaderboard.js"></script>
+  <script src="js/application.js"></script>
+</body>
+</html>

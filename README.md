@@ -6,12 +6,14 @@ GetDLS is a version of [GetMIT](https://mitchgu.github.io/GetMIT/) for the East 
 
 | Tile | School | | Tile | School |
 |---|---|---|---|---|
-| 2 | Dougherty Valley | | 128 | Amador Valley |
-| 4 | Foothill | | 256 | California |
-| 8 | Dublin | | 512 | San Ramon Valley |
-| 16 | Livermore | | 1024 | Carondelet |
-| 32 | Granada | | 2048 | **De La Salle** (you win) |
-| 64 | Monte Vista | | 4096+ | **IHTFP** |
+| 2 | Dougherty Valley | | 512 | San Ramon Valley |
+| 4 | Foothill | | 1024 | Carondelet |
+| 8 | Dublin | | 2048 | **De La Salle** (you win) |
+| 16 | Livermore | | 4096 | Cook (DLS house) |
+| 32 | Granada | | 8192 | Reedley (DLS house) |
+| 64 | Monte Vista | | 16384 | Grove (DLS house) |
+| 128 | Amador Valley | | 32768 | Odyssey (DLS house) |
+| 256 | California | | 65536+ | **IHTFP** |
 
 The order follows the EBAL rankings in the hsratings.com 2025 East Bay power ratings, from lowest to highest. Carondelet is not in those football ratings because it is a girls' school, so it sits one step below De La Salle. Only the 11 full EBAL members are included; the supplemental badminton schools (Emerald and Quarry Lane) are left out. The logos come from the [EBAL school directory](https://theebal.com/School_Directory).
 
@@ -35,6 +37,10 @@ Each game starts from a random seed, and the game records every move. When a pla
 - an edited score, an edited move list or a made-up game is rejected;
 - a game can be submitted once it ends, or as soon as the player reaches De La Salle. If the player then keeps going, they can submit the same game again with the higher score;
 - each IP address can submit at most 15 times per minute, and names containing obvious profanity are rejected.
+
+## Resetting the leaderboard
+
+The leaderboard is stored under a version name in `api/_lib/common.js` (currently `getdls:v2`). To start with an empty leaderboard, change it to `getdls:v3` and push. Old scores stay in the database, so changing the name back restores them.
 
 ## Moderation (optional)
 
@@ -74,6 +80,7 @@ If you want a different order, change three places so they stay in sync:
 
 - the `.tile.tile-N` image URLs in `style/main.css`;
 - `TILE_IMAGES` and `TILE_NAMES` in `js/leaderboard.js`;
+- the IHTFP cut-off (`tile.value > 32768`) in `js/html_actuator.js` and `js/leaderboard.js`, if the last tile changes;
 - the school list at the bottom of the game section in `index.html`.
 
 ## Credits

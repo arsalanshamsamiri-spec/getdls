@@ -8,19 +8,21 @@
   var TILE_IMAGES = {
     2: "dougherty", 4: "foothill", 8: "dublin", 16: "livermore",
     32: "granada", 64: "montevista", 128: "amador", 256: "california",
-    512: "sanramon", 1024: "carondelet", 2048: "delasalle"
+    512: "sanramon", 1024: "carondelet", 2048: "delasalle",
+    4096: "cook", 8192: "reedley", 16384: "grove", 32768: "odyssey"
   };
   var TILE_NAMES = {
     2: "Dougherty Valley", 4: "Foothill", 8: "Dublin", 16: "Livermore",
     32: "Granada", 64: "Monte Vista", 128: "Amador Valley", 256: "California",
-    512: "San Ramon Valley", 1024: "Carondelet", 2048: "De La Salle"
+    512: "San Ramon Valley", 1024: "Carondelet", 2048: "De La Salle",
+    4096: "Cook", 8192: "Reedley", 16384: "Grove", 32768: "Odyssey"
   };
 
   function tileImage(value) {
-    return "img/" + (value > 2048 ? "ihtfp" : (TILE_IMAGES[value] || "dougherty")) + ".png";
+    return "img/" + (value > 32768 ? "ihtfp" : (TILE_IMAGES[value] || "dougherty")) + ".png";
   }
   function tileName(value) {
-    return value > 2048 ? "IHTFP (" + value + ")" : (TILE_NAMES[value] || "");
+    return value > 32768 ? "IHTFP (" + value + ")" : (TILE_NAMES[value] || "");
   }
 
   // Storage that never throws (private browsing, disabled storage, ...)

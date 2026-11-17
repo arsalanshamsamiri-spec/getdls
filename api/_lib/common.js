@@ -1,8 +1,9 @@
 const crypto = require("crypto");
 
 const KEYS = {
-  board: "getdls:board",   // sorted set: run id -> score
-  runs:  "getdls:runs"     // hash: run id -> JSON {name, score, maxTile, ts}
+  // "v2" = leaderboard reset on Nov 16, 2026. Change the version to start fresh again.
+  board: "getdls:v2:board",   // sorted set: run id -> score
+  runs:  "getdls:v2:runs"     // hash: run id -> JSON {name, score, maxTile, ts}
 };
 
 const BOARD_SIZE   = 100;   // entries shown on the leaderboard
